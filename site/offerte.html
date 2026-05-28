@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offerte aanvragen — Nordic Cube Sauna</title>
+  <meta name="description" content="Vraag een vrijblijvende offerte aan voor jouw Nordic Cube sauna. We sturen je binnen 2 werkdagen een persoonlijk voorstel." />
+  <meta name="theme-color" content="#1a1612" />
+  <link rel="icon" href="images/logo.png" type="image/png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="loader" aria-hidden="true">
+    <img src="images/logo.png" alt="" />
+  </div>
+
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      Nordic Cube
+      <span>Sauna</span>
+    </a>
+    <nav class="nav" aria-label="Hoofdnavigatie">
+      <a href="index.html">Sauna</a>
+      <a href="verhaal.html">Ons verhaal</a>
+      <a href="index.html#specs">Specs</a>
+      <a href="offerte.html" class="active">Offerte</a>
+    </nav>
+    <a href="offerte.html" class="header-cta">Offerte aanvragen</a>
+    <button class="menu-toggle" aria-label="Menu openen"></button>
+  </header>
+
+  <nav class="mobile-menu" aria-label="Mobiel menu">
+    <a href="index.html">Sauna</a>
+    <a href="verhaal.html">Ons verhaal</a>
+    <a href="index.html#specs">Specs</a>
+    <a href="offerte.html">Offerte aanvragen</a>
+  </nav>
+
+  <main class="quote-page">
+    <div class="quote-grid">
+
+      <!-- Left: visual + contact info -->
+      <aside class="quote-aside">
+        <div class="quote-aside-content">
+          <div>
+            <p class="eyebrow">— Persoonlijke offerte</p>
+            <h1 class="serif">In <em>3 stappen</em> je eigen Nordic Cube.</h1>
+            <p>Vul het formulier in. We sturen binnen twee werkdagen een offerte op maat — inclusief jouw montage-voorkeur, transport en alle opties.</p>
+          </div>
+          <div class="quote-aside-contact">
+            <a href="mailto:nordiccubesauna@gmail.com">
+              <span class="label">Mail</span>
+              <span>nordiccubesauna@gmail.com</span>
+            </a>
+            <a href="tel:+31617270102">
+              <span class="label">Bel</span>
+              <span>06 — 17270102</span>
+            </a>
+            <a href="https://wa.me/31617270102" target="_blank" rel="noopener">
+              <span class="label">App</span>
+              <span>WhatsApp →</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right: form -->
+      <section class="quote-form-wrap">
+        <div class="form-intro">
+          <p class="eyebrow">— Aanvraag</p>
+          <h2 class="serif">Vertel ons <em>even</em> wat over jou.</h2>
+          <p>Hoe meer we weten, hoe scherper de offerte. Alle velden met * zijn verplicht.</p>
+        </div>
+
+        <div class="steps" aria-hidden="true">
+          <span class="step active">01 — Jouw gegevens</span>
+          <span class="step active">02 — Jouw wens</span>
+          <span class="step">03 — Offerte</span>
+        </div>
+
+        <!--
+          Optioneel: zet een Web3Forms access key (gratis: https://web3forms.com)
+          in data-web3forms-key zodat het formulier direct naar je mailbox stuurt
+          zonder dat de bezoeker zijn mailprogramma hoeft te openen.
+          Voorbeeld: data-web3forms-key="11111111-2222-3333-4444-555555555555"
+        -->
+        <form id="offerte-form" data-web3forms-key="" novalidate>
+
+          <div class="field">
+            <label for="naam">Naam *</label>
+            <input id="naam" name="naam" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="field">
+            <label for="email">E-mailadres *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="field">
+            <label for="telefoon">Telefoonnummer</label>
+            <input id="telefoon" name="telefoon" type="tel" autocomplete="tel" />
+          </div>
+
+          <div class="field">
+            <label for="adres">Adres (plaats / postcode)</label>
+            <input id="adres" name="adres" type="text" autocomplete="address-level2" placeholder="Voor inschatting transportkosten" />
+          </div>
+
+          <div class="field">
+            <label>Montage-voorkeur</label>
+            <div class="radio-group" role="radiogroup">
+              <label class="radio-option">
+                <input type="radio" name="montage" value="DIY-pakket" checked />
+                <div class="ro-title">DIY</div>
+                <div class="ro-desc">Zelf bouwen</div>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="montage" value="Prefab" />
+                <div class="ro-title">Prefab</div>
+                <div class="ro-desc">Voorgemonteerd</div>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="montage" value="Volledige montage op locatie" />
+                <div class="ro-title">Op maat</div>
+                <div class="ro-desc">Wij doen alles</div>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="bericht">Bericht</label>
+            <textarea id="bericht" name="bericht" placeholder="Vragen, gewenste opties, planning, of iets anders dat we moeten weten."></textarea>
+          </div>
+
+          <!-- honey -->
+          <input type="text" name="bot-trap" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" />
+
+          <div class="submit-row">
+            <p>Je gegevens worden uitsluitend gebruikt om je offerte op te stellen.</p>
+            <button type="submit" class="btn-submit">
+              <span>Verstuur aanvraag</span>
+              <span class="arrow">→</span>
+            </button>
+          </div>
+
+          <div class="form-message" role="status" aria-live="polite"></div>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3 class="serif">Herstel · <em>ontspan</em> · geniet.</h3>
+        <p>De Nordic Cube — een compacte, betaalbare buitensauna met strakke Scandinavische uitstraling. Ontworpen en gebouwd in Nederland.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sauna</h4>
+        <ul>
+          <li><a href="index.html#specs">Specs</a></li>
+          <li><a href="verhaal.html">Ons verhaal</a></li>
+          <li><a href="offerte.html">Offerte</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:nordiccubesauna@gmail.com">nordiccubesauna@gmail.com</a></li>
+          <li><a href="tel:+31617270102">06 — 17270102</a></li>
+          <li><a href="https://wa.me/31617270102" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Locatie</h4>
+        <ul>
+          <li>Hoevelaken</li>
+          <li>Nederland</li>
+          <li><a href="offerte.html">Op afspraak bekijken →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> Nordic Cube Sauna. Alle rechten voorbehouden.</span>
+      <span>nordiccubesauna.nl</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
