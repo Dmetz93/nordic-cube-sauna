@@ -30,7 +30,7 @@ landen zonder dat de bezoeker iets hoeft te doen?
 
 1. Maak gratis account aan op https://web3forms.com (geen creditcard, geen limiet voor
    normaal gebruik).
-2. Kies je e-mailadres (`nordiccubesauna@gmail.com`) en kopieer de **Access Key**.
+2. Kies je e-mailadres (`info@nordiccubesauna.nl`) en kopieer de **Access Key**.
 3. Open `offerte.html`, zoek `data-web3formsKey=""` (regel ±82) en plak de key:
    ```html
    data-web3forms-key="11111111-2222-3333-4444-555555555555"

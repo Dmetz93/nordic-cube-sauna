@@ -1,4 +1,4 @@
-/* Nordic Cube — interactions */
+/* Nordic Cube interactions */
 (function () {
   // ---------- Loader ----------
   window.addEventListener("load", () => {
@@ -61,7 +61,7 @@
       const email = (data.get("email") || "").trim();
       const telefoon = (data.get("telefoon") || "").trim();
       const adres = (data.get("adres") || "").trim();
-      const montage = data.get("montage") || "—";
+      const montage = data.get("montage") || "n.v.t.";
       const bericht = (data.get("bericht") || "").trim();
 
       if (!naam || !email) {
@@ -80,7 +80,7 @@
           submitBtn.querySelector("span").textContent = "Versturen...";
           const payload = {
             access_key: accessKey,
-            subject: `Nieuwe offerte-aanvraag — ${naam}`,
+            subject: `Nieuwe offerte-aanvraag van ${naam}`,
             from_name: "Nordic Cube Website",
             reply_to: email,
             naam, email, telefoon, adres, montage, bericht,
@@ -111,11 +111,11 @@
       }
 
       // 2. Fallback: open mailto met vooringevulde gegevens
-      const subject = encodeURIComponent(`Offerte-aanvraag — ${naam}`);
+      const subject = encodeURIComponent(`Offerte-aanvraag van ${naam}`);
       const body = encodeURIComponent(
-        `Naam: ${naam}\nE-mail: ${email}\nTelefoon: ${telefoon}\nAdres: ${adres}\nMontage-optie: ${montage}\n\nBericht:\n${bericht}\n\n— verzonden via nordiccubesauna.nl`
+        `Naam: ${naam}\nE-mail: ${email}\nTelefoon: ${telefoon}\nAdres: ${adres}\nMontage-optie: ${montage}\n\nBericht:\n${bericht}\n\nVerzonden via nordiccubesauna.nl`
       );
-      window.location.href = `mailto:nordiccubesauna@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:info@nordiccubesauna.nl?subject=${subject}&body=${body}`;
       if (!useWeb3) {
         msg.textContent = "Je e-mailprogramma wordt geopend. Verstuur de mail om je aanvraag af te ronden.";
         msg.classList.add("show");
