@@ -51,8 +51,9 @@
   if (form) {
     const msg = form.querySelector(".form-message");
     const submitBtn = form.querySelector(".btn-submit");
+    const submitLabel = submitBtn.querySelector("span");
 
-    form.addEventListener("submit", async (e) => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
       msg.classList.remove("show", "error");
 
@@ -63,63 +64,23 @@
       const adres = (data.get("adres") || "").trim();
       const montage = data.get("montage") || "n.v.t.";
       const bericht = (data.get("bericht") || "").trim();
+      const honey = (data.get("bot-trap") || "").trim();
 
+      if (honey) return;
       if (!naam || !email) {
         msg.textContent = "Vul minimaal je naam en e-mailadres in.";
         msg.classList.add("show", "error");
         return;
       }
 
-      // 1. Probeer Web3Forms (gratis form-backend) als er een ACCESS_KEY ingevuld is
-      const accessKey = form.dataset.web3formsKey;
-      const useWeb3 = accessKey && accessKey.length > 10;
-
-      if (useWeb3) {
-        try {
-          submitBtn.disabled = true;
-          submitBtn.querySelector("span").textContent = "Versturen...";
-          const payload = {
-            access_key: accessKey,
-            subject: `Nieuwe offerte-aanvraag van ${naam}`,
-            from_name: "Nordic Cube Website",
-            reply_to: email,
-            naam, email, telefoon, adres, montage, bericht,
-          };
-          const res = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json", Accept: "application/json" },
-            body: JSON.stringify(payload),
-          });
-          const json = await res.json();
-          if (json.success) {
-            form.reset();
-            msg.textContent = "Bedankt! We nemen binnen 2 werkdagen contact met je op.";
-            msg.classList.add("show");
-            submitBtn.querySelector("span").textContent = "Verzonden";
-            return;
-          }
-          throw new Error(json.message || "Verzenden mislukt");
-        } catch (err) {
-          msg.textContent = "Er ging iets mis bij het verzenden. We openen je e-mailprogramma als alternatief...";
-          msg.classList.add("show", "error");
-        } finally {
-          submitBtn.disabled = false;
-          if (submitBtn.querySelector("span").textContent === "Versturen...") {
-            submitBtn.querySelector("span").textContent = "Verstuur aanvraag";
-          }
-        }
-      }
-
-      // 2. Fallback: open mailto met vooringevulde gegevens
       const subject = encodeURIComponent(`Offerte-aanvraag van ${naam}`);
       const body = encodeURIComponent(
-        `Naam: ${naam}\nE-mail: ${email}\nTelefoon: ${telefoon}\nAdres: ${adres}\nMontage-optie: ${montage}\n\nBericht:\n${bericht}\n\nVerzonden via nordiccubesauna.nl`
+        `Naam: ${naam}\nE-mail: ${email}\nTelefoon: ${telefoon || "n.v.t."}\nAdres: ${adres || "n.v.t."}\nMontage-optie: ${montage}\n\nBericht:\n${bericht || "(geen bericht)"}\n\nVerzonden via nordiccubesauna.nl`
       );
       window.location.href = `mailto:info@nordiccubesauna.nl?subject=${subject}&body=${body}`;
-      if (!useWeb3) {
-        msg.textContent = "Je e-mailprogramma wordt geopend. Verstuur de mail om je aanvraag af te ronden.";
-        msg.classList.add("show");
-      }
+      submitLabel.textContent = "Mail geopend";
+      msg.textContent = "Je mailprogramma is geopend met de aanvraag. Klik op verzenden om hem te versturen.";
+      msg.classList.add("show");
     });
   }
 })();
